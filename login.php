@@ -34,21 +34,17 @@ session_start();
 
                 $errors = [];
 
-                $name_hossz = strlen($_POST["name"]);
-
-                if ($name_hossz > 40 || $name_hossz < 3) {
-                    $errors[] = 'A névnek, minimum 3, maximum 40 karakterből kell állnia.';
-                }
-
                 $isValidEmail = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
 
                 if (!$isValidEmail) {
                     $errors[] = 'Az email invalid';
                 } else {
-                    $lekerdeze = mysqli_query($connection_database, "select id from admin where email = '{$_POST["email"]}'");
+                    $lekerdeze = mysqli_query($connection_database, "select * from admin where email = '{$_POST["email"]}'");
 
-                    if (mysqli_num_rows($lekerdeze) > 0) {
-                        $errors[] = 'Ez az email már használatban van!';
+                    if (mysqli_num_rows($lekerdeze) === 0) {
+                        $errors[] = 'A felhasználó nem található!';
+                    }else{
+                        $user = mysqli_fetch_array($lekerdeze);
                     }
                 }
 
@@ -57,25 +53,28 @@ session_start();
                 if ($password_hossz < 4) {
                     $errors[] = 'A jelszónka, minimum 4 karakterből kell állnia!';
                 } 
-                if($_POST["password"] !== $_POST["password_confirmation"]) {
-                    $errors[] = 'A két jelszó nem egyezik!';
-                }
 
 
                 if (count($errors) > 0) {
                     $_SESSION["errors"] = $errors;
                     $_SESSION["post"] = $_POST;
                 } else {
-                    $hashpass = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                    mysqli_query($connection_database, "INSERT INTO `admin` (`name`, `email`, `password`) VALUES ('{$_POST["name"]}', '{$_POST["email"]}', '$hashpass')");
-                }
-                $err = mysqli_error($connection_database);
-                if ($err) {
-                    die($err);
-                }
-                $_SESSION["success"] = 'Sikeres regisztráció!';
+                   $loginressult = password_verify($_POST["password"],$user["password"]);
 
 
+                    if(!$loginressult){
+                        $errors[] = 'Sikertelen bejelentkezés!';
+                        $_SESSION["errors"] = $errors;
+                        $_SESSION["post"] = $_POSt;
+                    }else{
+                        $_SESSION["user"] = $user;
+                        $_SESSION["success"] = 'Sikeres bejelentkezés!';
+                        header("location: admin.php");
+                        exit;
+                    }
+
+                }
+               
                 header("location:" . $_SERVER["HTTP_REFERER"]);
                 exit;
             }
