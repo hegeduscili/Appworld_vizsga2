@@ -89,9 +89,10 @@ if (!isset($_SESSION["user"])) {
                 print '<div class="error-messages">';
                 foreach ($_SESSION["errors"] as $err) {
                     print '<div class="error">' . $err . '</div>';
+                    unset($_SESSION["errors"]);
                 }
                 print '</div>';
-                unset($_SESSION["errors"]);
+              
             } elseif (isset($_SESSION["success"])) {
                 print '<div class="success-message">' . $_SESSION["success"] . '</div>';
                 unset($_SESSION["success"]);

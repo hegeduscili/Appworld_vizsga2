@@ -1,18 +1,20 @@
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+html,
+body {
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
     flex-direction: column;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 
-nav{
+nav {
     display: flex;
     background-color: #000000;
     color: white;
@@ -21,22 +23,22 @@ nav{
     justify-content: space-between;
 }
 
-nav .altalanos{
+nav .altalanos {
     flex: 1;
 }
 
 
-nav a{
+nav a {
     color: white;
     text-decoration: none;
     margin: 20px;
 }
 
-nav a i{
+nav a i {
     margin-right: 10px;
 }
 
-nav .felhasznalo{
+nav .felhasznalo {
     display: flex;
 }
 
@@ -44,7 +46,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: #E3C4A8;
-    height: 100vh;
+    height: 100%;
     padding-top: 30px;
     align-items: center;
 }
@@ -54,14 +56,14 @@ main .register {
     flex-direction: column;
     width: 50%;
     background-color: rgba(34, 96, 137, 0.4);
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 main .register h2 {
     font-size: 2rem;
-    text-align: center; 
+    text-align: center;
 }
 
 main .register .form-group {
@@ -69,28 +71,28 @@ main .register .form-group {
 }
 
 main .register label {
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 main .register input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 main .register textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 main .register button {
     width: 100%;
     padding: 10px;
-    background-color: #226089; 
-    color: white; 
+    background-color: #226089;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -98,24 +100,25 @@ main .register button {
 }
 
 main .register button:hover {
-    background-color: #1c4d6c; 
+    background-color: #1c4d6c;
 }
 
 
-main .error-messages{
-    background-color: #721c24;  
-    color: white;         
-    border-color: #f5c6cb;     
-    border-radius: .25rem;   
-    padding: .75rem 1.25rem; 
+main .error-messages {
+    background-color: #721c24;
+    color: white;
+    border-color: #f5c6cb;
+    border-radius: .25rem;
+    padding: .75rem 1.25rem;
     margin-bottom: 20px;
 }
-main .success-message{
-    background-color: #3e9743;   
-    color: white;         
-    border-color: #f5c6cb;     
-    border-radius: .25rem;   
-    padding: .75rem 1.25rem; 
+
+main .success-message {
+    background-color: #3e9743;
+    color: white;
+    border-color: #f5c6cb;
+    border-radius: .25rem;
+    padding: .75rem 1.25rem;
     margin-bottom: 20px;
 
 }
@@ -125,9 +128,9 @@ main .admin {
     flex-direction: column;
     width: 50%;
     background-color: rgba(34, 96, 137, 0.4);
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 main .list {
@@ -135,9 +138,9 @@ main .list {
     flex-direction: column;
     width: 80%;
     background-color: rgba(34, 96, 137, 0.4);
-    padding: 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 table {
@@ -147,7 +150,8 @@ table {
     margin-top: 20px;
 }
 
-th, td {
+th,
+td {
     padding: 12px 15px;
     text-align: left;
 }
@@ -161,15 +165,16 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-thead > tr{
+thead>tr {
     font-weight: bold;
 }
 
-tbody > tr:hover {
+tbody>tr:hover {
     background-color: #e0e0e0;
 }
 
-.edit, .delete {
+.edit,
+.delete {
     background-color: #007bff;
     color: #fff;
     padding: 6px 10px;
@@ -180,4 +185,9 @@ tbody > tr:hover {
 
 .delete {
     background-color: #dc3545;
+}
+
+td > a {
+    text-decoration: none;
+    color: #000000;
 }

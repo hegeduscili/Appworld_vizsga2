@@ -38,12 +38,12 @@ if (!isset($_SESSION["user"])) {
             <?php
             $connection_database = mysqli_connect("localhost", "root", "", "appworld_vizsga");
             if (!$connection_database) {
-                die("Connection failed: " . mysqli_connect_error());
+                die( mysqli_connect_error());
             }
             $query = "SELECT cim, rovidismerteto, szerzo FROM cikkek";
             $result = mysqli_query($connection_database, $query);
             if (!$result) {
-                die("Query failed: " . mysqli_error($connection_database));
+                die(mysqli_error($connection_database));
             }
             ?>
             <form action="" method="POST">
