@@ -59,6 +59,10 @@ if (!isset($_SESSION["user"])) {
                     $errors[] = 'A cikknek kötelező címet adni!';
                 }
 
+                if ($_POST["rovidismerteto"] === ''){
+                    $errors[] = 'A rövid ismertető nem lehet üres!';
+                }
+
                 if ($_POST["tartalom"] === ''){
                     $errors[] = 'A tartalom nem lehet üres!';
                 }
@@ -68,7 +72,7 @@ if (!isset($_SESSION["user"])) {
                     $_SESSION["post"] = $_POST;
                 } else {
                     $hashpass = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                    mysqli_query($connection_database, "INSERT INTO `cikkek` (`cim`, `szerzo`, `tartalom`) VALUES ('{$_POST["cim"]}', '{$_POST["szerzoneve"]}', '{$_POST["tartalom"]}')",);
+                    mysqli_query($connection_database, "INSERT INTO `cikkek` (`cim`,`rovidismerteto`, `szerzo`, `tartalom`) VALUES ('{$_POST["cim"]}','{$_POST["rovidismerteto"]}', '{$_POST["szerzoneve"]}', '{$_POST["tartalom"]}')",);
                 }
                 $err = mysqli_error($connection_database);
                 if ($err) {
@@ -104,6 +108,11 @@ if (!isset($_SESSION["user"])) {
                 <div class="form-group">
                     <label for="cim">Adja meg a cikk címét!</label><br>
                     <input type="text" name="cim" placeholder="Adja meg a cikk címét..."><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="cim">Adja meg a cikk ismertetőjét!</label><br>
+                    <input type="text" name="rovidismerteto" placeholder="Adja meg a cikk ismertetőjét..."><br><br>
                 </div>
 
                 <div class="form-group">

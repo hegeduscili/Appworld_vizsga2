@@ -129,3 +129,55 @@ main .admin {
     border-radius: 10px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
 }
+
+main .list {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background-color: rgba(34, 96, 137, 0.4);
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+table {
+    font-size: 18px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+thead > tr{
+    font-weight: bold;
+}
+
+tbody > tr:hover {
+    background-color: #e0e0e0;
+}
+
+.edit, .delete {
+    background-color: #007bff;
+    color: #fff;
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete {
+    background-color: #dc3545;
+}
