@@ -50,10 +50,8 @@ session_start();
                     die(mysqli_error($connection_database));
                 }
             
-                // Fetch and store the data
                 $data = mysqli_fetch_assoc($result);
             
-                // Close the database connection
                 mysqli_close($connection_database);
             }
             ?>
@@ -62,12 +60,12 @@ session_start();
     <main>
     <div class="list" id="cikkek">
         <?php if (isset($data)): ?>
-            <!-- Display the data here -->
-            <h3><?php echo $data['cim']; ?></h3>
-            <p><?php echo $data['tartalom']; ?></p>
-            <h6>Szerző: <?php echo $data['szerzo']; ?></h6>
+
+            <h3><?php print $data['cim']; ?></h3>
+            <p><?php print $data['tartalom']; ?></p>
+            <h6>Szerző: <?php print $data['szerzo']; ?></h6>
         <?php else: ?>
-            <p>Data not found.</p>
+            <p>Tartalom nem található</p>
         <?php endif; ?>
     </div>
     </main>
