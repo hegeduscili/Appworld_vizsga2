@@ -15,9 +15,11 @@ session_start();
     <nav>
         <h1>napihírek.hu</h1>
         <div class="altalanos">
-            <a href="#">Kezdőlap</a>
+            <a href="index.php">Kezdőlap</a>
             <a href="#">Mai hírek</a>
             <a href="#">Legtöbbször kattintott</a>
+            <a href="editcikk.php">Hírek szerkesztése</a>
+            <a href="addcikk.php">Új hír rögzítése</a>
         </div>
         <div class="felhasznalo">
             <a href="register.php"></i>Regisztráció</a>
