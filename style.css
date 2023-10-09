@@ -39,3 +39,76 @@ nav a i{
 nav .felhasznalo{
     display: flex;
 }
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color: #E3C4A8;
+    height: 100vh;
+    justify-content: center; 
+    align-items: center;
+}
+
+main .register {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: rgba(34, 96, 137, 0.4);
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+main .register h2 {
+    font-size: 2rem;
+    text-align: center; 
+}
+
+main .register .form-group {
+    margin-bottom: 15px;
+}
+
+main .register label {
+    font-weight: bold; 
+}
+
+main .register input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
+
+main .register button {
+    width: 100%;
+    padding: 10px;
+    background-color: #226089; 
+    color: white; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main .register button:hover {
+    background-color: #1c4d6c; 
+}
+
+
+main .error-messages{
+    background-color: #721c24;  
+    color: white;         
+    border-color: #f5c6cb;     
+    border-radius: .25rem;   
+    padding: .75rem 1.25rem; 
+    margin-bottom: 20px;
+}
+main .success-message{
+    background-color: #3e9743;   
+    color: white;         
+    border-color: #f5c6cb;     
+    border-radius: .25rem;   
+    padding: .75rem 1.25rem; 
+    margin-bottom: 20px;
+
+}

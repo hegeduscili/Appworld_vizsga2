@@ -23,7 +23,7 @@
         </div>
         <div class="felhasznalo">
             <a href="login.php"><i class="fa-solid fa-user"></i>Bejelentkezés</a>
-            <a href="register.php">Regisztráció</a>
+            <a href="#">Regisztráció</a>
         </div>
     </nav>
 </body>
