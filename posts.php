@@ -37,7 +37,7 @@ session_start();
     </nav>
 
 
-    <main>
+
         <?php
         $connection_database = mysqli_connect("localhost", "root", "", "appworld_vizsga");
         if (!$connection_database) {
@@ -65,7 +65,7 @@ session_start();
             mysqli_close($connection_database);
         }
         ?>
-
+    <main>
         <div class="list" id="cikkek">
             <?php if (isset($data)) : ?>
 
@@ -76,7 +76,7 @@ session_start();
                 <p>Tartalom nem található</p>
             <?php endif; ?>
         </div>
-        </main>
+    </main>
     <script src="scripts.js"></script>
 
 </body>

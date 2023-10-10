@@ -79,7 +79,6 @@ if (!isset($_SESSION["user"])) {
                     $_SESSION["errors"] = $errors;
                     $_SESSION["post"] = $_POST;
                 } else {
-                    $hashpass = password_hash($_POST["password"], PASSWORD_DEFAULT);
                     mysqli_query($connection_database, "INSERT INTO `cikkek` (`cim`,`rovidismerteto`, `szerzo`, `tartalom`) VALUES ('{$_POST["cim"]}','{$_POST["rovidismerteto"]}', '{$_POST["szerzoneve"]}', '{$_POST["tartalom"]}')",);
                 }
                 $err = mysqli_error($connection_database);

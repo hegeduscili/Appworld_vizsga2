@@ -1,14 +1,19 @@
 <?php
 session_start();
-?>
 
+if (!isset($_SESSION["user"])) {
+    $_SESSION["errors"] = ['Az oldal bejelentkezés után látogatható!'];
+    header("location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Napihírek.hu</title>
+    <title>Cikk szerkesztése</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -37,10 +42,9 @@ session_start();
 
     </nav>
 
-
     <main>
         <div class="list">
-            <h2>Cikkek</h2>
+            <h2>Cikkek szerkesztése</h2>
             <?php
             $connection_database = mysqli_connect("localhost", "root", "", "appworld_vizsga");
             if (!$connection_database) {
@@ -59,18 +63,18 @@ session_start();
                             <td>Cím</td>
                             <td>Ismertető</td>
                             <td>Szerző</td>
-
+                            <td>Módosítás</td>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td><a href='posts.php?id=" . $row['id'] . "'>" . $row['cim'] . "</a></td>";
-
-                            echo "<td>" . $row['rovidismerteto'] . "</td>";
-                            echo "<td>" . $row['szerzo'] . "</td>";
-                            echo "</tr>";
+                            print "<tr>";
+                            echo "<td>".$row['cim']."</td>";
+                            echo "<td>".$row['rovidismerteto']."</td>";
+                            echo "<td>".$row['szerzo']."</td>";
+                            print '<td><a href="editcikk.php?id=' . $row['id'] . '" class="edit">Szerkesztés</a><a href="delete.php" class="delete">Törlés</a></td>';
+                            print "</tr>";
                         }
                         ?>
 
@@ -79,8 +83,7 @@ session_start();
             </form>
         </div>
     </main>
-
-    <footer></footer>
+    <script src="scripts.js"></script>
 </body>
 
 </html>
