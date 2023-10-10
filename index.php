@@ -23,7 +23,7 @@ session_start();
 
         <?php
         if (isset($_SESSION['user'])) {
-            echo " <a href='editcikk.php'>Hírek szerkesztése</a>";
+            echo " <a href='admincikk.php'>Hírek szerkesztése</a>";
             echo "<a href='addcikk.php'>Új hír rögzítése</a>";
             echo "<div class = 'felhasznalo'>";
             echo "<a href='admin.php'>Profil</a>";
@@ -31,7 +31,7 @@ session_start();
             echo "</div>";
         } else {
             echo "<a href='login.php'>Bejelentkezés</a>";
-            echo "<a href='register.php'>Regisztráció</a>";
+           // echo "<a href='register.php'>Regisztráció</a>";
         }
         ?>
 

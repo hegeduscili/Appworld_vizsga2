@@ -28,7 +28,7 @@ if (!isset($_SESSION["user"])) {
 
         <?php
         if (isset($_SESSION['user'])) {
-            echo " <a href='editcikk.php'>Hírek szerkesztése</a>";
+            echo " <a href='admincikk.php'>Hírek szerkesztése</a>";
             echo "<a href='addcikk.php'>Új hír rögzítése</a>";
             echo "<div class = 'felhasznalo'>";
             echo "<a href='admin.php'>Profil</a>";
@@ -36,7 +36,7 @@ if (!isset($_SESSION["user"])) {
             echo "</div>";
         } else {
             echo "<a href='login.php'>Bejelentkezés</a>";
-            echo "<a href='register.php'>Regisztráció</a>";
+            // echo "<a href='register.php'>Regisztráció</a>";
         }
         ?>
 
@@ -46,15 +46,16 @@ if (!isset($_SESSION["user"])) {
         <div class="list">
             <h2>Cikkek szerkesztése</h2>
             <?php
-            $connection_database = mysqli_connect("localhost", "root", "", "appworld_vizsga");
-            if (!$connection_database) {
-                die(mysqli_connect_error());
-            }
-            $query = "SELECT * FROM cikkek";
-            $result = mysqli_query($connection_database, $query);
-            if (!$result) {
-                die(mysqli_error($connection_database));
-            }
+           $connection_database = mysqli_connect("localhost", "root", "", "appworld_vizsga");
+           if (!$connection_database) {
+               die(mysqli_connect_error());
+           }
+           
+           $query = "SELECT * FROM cikkek";
+           $result = mysqli_query($connection_database, $query);
+           if (!$result) {
+               die(mysqli_error($connection_database));
+           }
             ?>
             <form action="" method="POST">
                 <table>
@@ -70,10 +71,10 @@ if (!isset($_SESSION["user"])) {
                         <?php
                         while ($row = mysqli_fetch_assoc($result)) {
                             print "<tr>";
-                            echo "<td>".$row['cim']."</td>";
-                            echo "<td>".$row['rovidismerteto']."</td>";
-                            echo "<td>".$row['szerzo']."</td>";
-                            print '<td><a href="editcikk.php?id=' . $row['id'] . '" class="edit">Szerkesztés</a><a href="delete.php" class="delete">Törlés</a></td>';
+                            echo "<td>" . $row['cim'] . "</td>";
+                            echo "<td>" . $row['rovidismerteto'] . "</td>";
+                            echo "<td>" . $row['szerzo'] . "</td>";
+                            print '<td><a href="editcikk.php?id=' . $row['id'] . '" class="edit">Szerkesztés</a><a href="delete.php?id=' . $row['id'] . '" class="delete" data-id="' . $row['id'] . '">Törlés</a></td>';
                             print "</tr>";
                         }
                         ?>
@@ -83,7 +84,21 @@ if (!isset($_SESSION["user"])) {
             </form>
         </div>
     </main>
-    <script src="scripts.js"></script>
+    <script>
+        var deleteL = document.querySelectorAll(".delete");
+
+        deleteL.forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+
+                var id = this.getAttribute("data-id");
+
+                if (confirm("Biztos törölni akarja a cikket?")) {
+                    window.location.href = "delete.php?id=" + id;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
