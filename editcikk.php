@@ -28,15 +28,15 @@ if (!isset($_SESSION["user"])) {
 
         <?php
         if (isset($_SESSION['user'])) {
-            echo " <a href='admincikk.php'>Hírek szerkesztése</a>";
-            echo "<a href='addcikk.php'>Új hír rögzítése</a>";
-            echo "<div class = 'felhasznalo'>";
-            echo "<a href='admin.php'>Profil</a>";
-            echo "<a href='logout.php'>Kijelentkezés</a>";
-            echo "</div>";
+            print " <a href='admincikk.php'>Hírek szerkesztése</a>";
+            print "<a href='addcikk.php'>Új hír rögzítése</a>";
+            print "<div class = 'felhasznalo'>";
+            print "<a href='admin.php'>Profil</a>";
+            print "<a href='logout.php'>Kijelentkezés</a>";
+            print "</div>";
         } else {
-            echo "<a href='login.php'>Bejelentkezés</a>";
-            //echo "<a href='register.php'>Regisztráció</a>";
+            print "<a href='login.php'>Bejelentkezés</a>";
+            //print "<a href='register.php'>Regisztráció</a>";
         }
         ?>
 
@@ -139,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
             <form action="" method="POST">
                 <div class="form-group">
                     <label for="szerzoneve">Adja meg a szerző nevét!</label><br>
-                    <input type="text" name="szerzoneve" placeholder="Adja meg a szerző nevét..." value="<?php echo isset($data['szerzo']) ? $data['szerzo'] : ''; ?>"><br><br>
+                    <input type="text" name="szerzoneve" placeholder="Adja meg a szerző nevét..." value="<?php print isset($data['szerzo']) ? $data['szerzo'] : ''; ?>"><br><br>
                 </div>
 
                 <div class="form-group">
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
                 <div class="form-group">
                     <label for="tartalom">Adja meg a tartalmat!</label><br>
-                    <textarea name="tartalom" id="tartalom"><?php if (isset($data)) echo $data['tartalom']; ?></textarea><br><br>
+                    <textarea name="tartalom" id="tartalom"><?php if (isset($data)) print $data['tartalom']; ?></textarea><br><br>
                 </div>
 
                 <button type="submit">Cikk Feltöltése</button>

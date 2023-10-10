@@ -23,15 +23,15 @@ session_start();
 
         <?php
         if (isset($_SESSION['user'])) {
-            echo " <a href='admincikk.php'>Hírek szerkesztése</a>";
-            echo "<a href='addcikk.php'>Új hír rögzítése</a>";
-            echo "<div class = 'felhasznalo'>";
-            echo "<a href='admin.php'>Profil</a>";
-            echo "<a href='logout.php'>Kijelentkezés</a>";
-            echo "</div>";
+            print " <a href='admincikk.php'>Hírek szerkesztése</a>";
+            print "<a href='addcikk.php'>Új hír rögzítése</a>";
+            print "<div class = 'felhasznalo'>";
+            print "<a href='admin.php'>Profil</a>";
+            print "<a href='logout.php'>Kijelentkezés</a>";
+            print "</div>";
         } else {
-            echo "<a href='login.php'>Bejelentkezés</a>";
-           // echo "<a href='register.php'>Regisztráció</a>";
+            print "<a href='login.php'>Bejelentkezés</a>";
+           // print "<a href='register.php'>Regisztráció</a>";
         }
         ?>
 
@@ -65,12 +65,12 @@ session_start();
                     <tbody>
                         <?php
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td><a href='posts.php?id=" . $row['id'] . "'>" . $row['cim'] . "</a></td>";
+                            print "<tr>";
+                            print "<td><a href='posts.php?id=" . $row['id'] . "'>" . $row['cim'] . "</a></td>";
 
-                            echo "<td>" . $row['rovidismerteto'] . "</td>";
-                            echo "<td>" . $row['szerzo'] . "</td>";
-                            echo "</tr>";
+                            print "<td>" . $row['rovidismerteto'] . "</td>";
+                            print "<td>" . $row['szerzo'] . "</td>";
+                            print "</tr>";
                         }
                         ?>
 
